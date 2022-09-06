@@ -81,8 +81,11 @@ for epoch in range(num_epochs):
     # ===================log========================
     print('epoch [{}/{}], loss:{:.4f}'
           .format(epoch+1, num_epochs, total_loss))
-    if epoch % 10 == 0:
+    if epoch % 10 == 5:
         pic = to_img(output.cpu().data)
         save_image(pic, './dc_img/image_{}.png'.format(epoch))
+        print('save')
+        input()
+        torch.save(model.state_dict(), './conv_autoencoder.pth')
 
 torch.save(model.state_dict(), './conv_autoencoder.pth')
